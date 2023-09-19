@@ -1,12 +1,10 @@
-FROM alpine:3.16
+FROM alpine:3.14
 
 RUN apk update && apk add --no-cache \
   gcc libc-dev g++ graphviz python3 py-pip python3-dev ttf-opensans curl fontconfig npm xdg-utils
 
 COPY web /app
 WORKDIR /app
-COPY /scripts/entrypoint.sh /scripts/start.sh /scripts/
-RUN chmod +x /scripts/*.sh
 
 RUN pip3 install -r requirements.txt
 
@@ -17,4 +15,8 @@ RUN curl -O https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinte
 && rm NotoSansCJKjp-hinted.zip \
 && fc-cache -fv
 
-ENTRYPOINT ["/scripts/entrypoint.sh"]
+# generate help menu template
+RUN python3 helpers.py
+
+# install editor library
+RUN npm install --prefix ./static/js ace-builds@1.11.2

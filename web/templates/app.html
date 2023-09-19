@@ -32,20 +32,23 @@
           <button class="btn" id="close_help">&#8592;</button>
           <button class="btn" id="btn_more">Examples</button>
         </div>
-      <div> 
+      <div>
         <div id="action">
           <button class="btn" value="Build" id="build">Build <i class="fas fa-angle-double-right"></i></button>
           <a id='donwload' class="btn">Download</a>
-        </div>    
+        </div>
       </div>
       </div>
-      <div id="left">
-          <div id="editor">{{diagrams_data}}</div>
+      <div class="content">
+        <div id="left">
+            <div id="editor">{{diagrams_data}}</div>
+        </div>
+        <div id="right">
+          <div id="render">
+          </div>
+<!--          <div id="myresult" class="img-zoom-result"></div>-->
+        </div>
       </div>
-      <div id="render">
-      </div>
-      <div id="myresult" class="img-zoom-result"></div>
-     
     </div>
   </body>
   <script src="/static/js/node_modules/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
